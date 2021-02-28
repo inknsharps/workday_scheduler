@@ -21,32 +21,31 @@ setInterval(() => {
 function buildTimeBlocks(hour){
     // Create and append row for time block
     let timeRowEl = $("<tr></tr>")
-        .attr("class", `d-flex time-row ${hour}`)
-        .attr("data-value", hour);
+        .attr("data-value", hour)
+        .addClass(`d-flex time-row ${hour}`);
     timeBlockBodyEl.append(timeRowEl);
-    // console.log(timeRowEl[0].dataset.value);
     // Create and append hour column
     let hourColumnEl = $("<td></td>")
         .attr("scope", "col")
-        .attr("class", "d-flex col-2 col-lg-1 justify-content-center align-items-center")
+        .addClass("d-flex col-2 col-lg-1 justify-content-center align-items-center")
         .text(moment(`${hour}`, "h").format("hA"));
     timeRowEl.append(hourColumnEl);
     // Create and append event column
     let eventColumnEl = $("<td></td>")
         .attr("scope", "col")
-        .attr("class", "col-8  col-lg-10");
+        .addClass("col-8 col-lg-10");
     let eventText = $("<textarea></textarea>")
         .attr("type", "text")
-        .attr("class", "d-flex form-control col-12 event-input");
+        .addClass("d-flex form-control col-12 event-input");
     eventColumnEl.append(eventText);
     timeRowEl.append(eventColumnEl);
     // Create and append save column
     let saveColumnEl = $("<td></td>")
         .attr("scope", "col")
-        .attr("class", "d-flex col-2 col-lg-1 justify-content-center align-items-center");
+        .addClass("d-flex col-2 col-lg-1 justify-content-center align-items-center");
     let saveButtonEl = $("<button></button>")
         .attr("type", "button")
-        .attr("class", "btn btn-primary far fa-save fa-lg saveBtn")
+        .addClass("btn btn-primary far fa-save fa-lg saveBtn")
         .on("click", saveEvent);
     saveColumnEl.append(saveButtonEl); 
     timeRowEl.append(saveColumnEl);
@@ -113,7 +112,9 @@ function clearAllEvents(){
 
 // Function to build out the timeblocks, highlight them and associated event text
 function initPage(){
+    // Declare a variable for which hour to start the schedule building on
     let i = 8;
+    // While loop that populates the page with the hour rows
     while (i < 19){
         buildTimeBlocks(i);
         highlightEvents(i);
