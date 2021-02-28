@@ -5,10 +5,12 @@ let timeBlockBodyEl = $(".time-block")
 // Declare event field related variables
 let eventFieldsEl;
 let eventFieldsArray;
-
-// Moment.js Scripts
+// Declare variable for the current hour as a number
+let currentHour = moment().hours()
 // Declare variable for the current date and time
 let currentDate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+
+// Date and time display functionality
 currentDateEl.text(currentDate);
 setInterval(() => {
     currentDateEl.text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
@@ -49,6 +51,20 @@ function buildTimeBlocks(hour){
     timeRowEl.append(saveColumnEl);
 }
 
+// Function for highlighting the colors of the row
+function highlightEvents(rowNum){
+    let tableTimes = $(`.${rowNum}`);
+    if (currentHour === rowNum){
+        tableTimes.addClass("present");
+    }
+    if (currentHour > rowNum){
+        tableTimes.addClass("past");
+    }
+    if (currentHour < rowNum){
+        tableTimes.addClass("future");
+    }
+}
+
 // Function to save events that are currently written to localStorage
 function saveEvent(){
     eventFieldsArray = [];
@@ -74,33 +90,15 @@ function retrieveEvent(){
     }
 }
 
-// Function to build out the timeblocks and associated text
+// Function to build out the timeblocks, highlight them and associated event text
 function initPage(){
     let i = 0;
     while (i < 24){
         buildTimeBlocks(i);
+        highlightEvents(i);
         i++;
     }
     retrieveEvent();
 }
 
 initPage();
-
-// TO DO
-// Hour by hour styling
-// Declare variable for the current hour as a number
-let currentHour = moment().hours()
-
-// Function for highlighting the colors of the row
-function highlightEvents(rowNum){
-    let tableTimes = $(`.${rowNum}`);
-    if (currentHour === rowNum){
-        tableTimes.addClass("present");
-    }
-    if (currentHour > rowNum){
-        tableTimes.addClass("past");
-    }
-    if (currentHour < rowNum){
-        tableTimes.addClass("future");
-    }
-}
