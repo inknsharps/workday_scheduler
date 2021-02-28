@@ -30,3 +30,27 @@ function buildTimeBlocks(hour){
     saveColumnEl.append(saveButtonEl); 
     timeRowEl.append(saveColumnEl);
 }
+
+// Function to build out the timeblocks and associated text
+function initPage(){
+    let i = 9;
+    while (i < 19){
+        if (i < 12) {
+            while (i < 12){
+                buildTimeBlocks(i);
+                i++;
+            } 
+        } else if (i === 12){
+            buildTimeBlocks(i);
+            i++;
+        } else if (i < 19) {
+            while (i < 19) {
+                buildTimeBlocks(i);
+                i++;
+            }
+        }
+    }
+    retrieveEvent();
+}
+
+initPage();
