@@ -17,8 +17,11 @@ setInterval(() => {
 // Function for building the timeblocks
 function buildTimeBlocks(hour){
     // Create and append row for time block
-    let timeRowEl = $("<tr></tr>").attr("class", `d-flex time-row ${hour}`);
+    let timeRowEl = $("<tr></tr>")
+        .attr("class", `d-flex time-row ${hour}`)
+        .attr("data-value", hour);
     timeBlockBodyEl.append(timeRowEl);
+    console.log(timeRowEl[0].dataset.value);
     // Create and append hour column
     let hourColumnEl = $("<td></td>")
         .attr("scope", "col")
@@ -73,8 +76,8 @@ function retrieveEvent(){
 
 // Function to build out the timeblocks and associated text
 function initPage(){
-    let i = 9;
-    while (i < 19){
+    let i = 0;
+    while (i < 24){
         buildTimeBlocks(i);
         i++;
     }
@@ -85,8 +88,19 @@ initPage();
 
 // TO DO
 // Hour by hour styling
-let currentHour = moment().format("hA");
+// Declare variable for the current hour as a number
+let currentHour = moment().hours()
 
-// function hourStyling(){
-//     if currentHour = 
-// }
+// Function for highlighting the colors of the row
+function highlightEvents(rowNum){
+    let tableTimes = $(`.${rowNum}`);
+    if (currentHour === rowNum){
+        tableTimes.addClass("present");
+    }
+    if (currentHour > rowNum){
+        tableTimes.addClass("past");
+    }
+    if (currentHour < rowNum){
+        tableTimes.addClass("future");
+    }
+}
