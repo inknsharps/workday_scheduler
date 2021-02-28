@@ -46,7 +46,7 @@ function buildTimeBlocks(hour){
         .attr("class", "d-flex col-1 justify-content-center align-items-center");
     let saveButtonEl = $("<button></button>")
         .attr("type", "button")
-        .attr("class", "btn btn-primary far fa-save saveBtn")
+        .attr("class", "btn btn-primary far fa-save fa-lg saveBtn")
         .on("click", saveEvent);
     saveColumnEl.append(saveButtonEl); 
     timeRowEl.append(saveColumnEl);
