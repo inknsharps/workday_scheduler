@@ -15,7 +15,7 @@ This is a minimalist work day scheduler web application that is built with mobil
 
 Click on a timeblock to edit its contents. You can then click the save button beside that timeblock to save that event and it will persist upon reloading the page. If you wish to clear all events quickly, click the "Clear All Events" button in the header, and it will ask for your confirmation to clear all events.
 
-A deployed version is available <a href="#">here</a>.
+A deployed version is available <a href="https://inknsharps.github.io/workday_scheduler/">here</a>.
 
 ## Gallery
 
