@@ -2,9 +2,10 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  background-color: var(--gray-dark);
 }
 
-textarea{
+textarea {
   background: transparent;
   border: none;
   resize: none;
@@ -13,19 +14,45 @@ textarea{
   padding: 10px;
 }
 
+.form-control {
+  border: none;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0);
+}
+
 .jumbotron {
   text-align: center;
   background-color: transparent;
-  color: black;
+  color: var(--light);
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: 10px solid var(--light);
 }
 
-.description{
+.description {
   white-space: pre-wrap;
 }
 
-.time-block{
+.table {
+  color: var(--light);
+}
+
+.table thead {
+  background-color: var(--cyan);
+}
+
+.table thead th {
+  border-bottom: 2px solid var(--gray);
+}
+
+.table-bordered {
+  border: 1px solid var(--gray);
+}
+
+.table-bordered td, .table-bordered th {
+  border: 1px solid var(--gray);
+}
+
+.time-block {
   text-align: center;
   border-radius: 15px;
 }
@@ -43,17 +70,17 @@ textarea{
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color: rgb(80, 80, 80);
   color: white;
 }
 
 .present {
-  background-color: #ff6961;
+  background-color: rgb(60,190, 212);
   color: white;
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: rgb(28, 104, 136);
   color: white;
 }
 
