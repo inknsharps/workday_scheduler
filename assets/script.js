@@ -31,6 +31,31 @@ function buildTimeBlocks(hour){
     timeRowEl.append(saveColumnEl);
 }
 
+// Function to save events that are currently written to localStorage
+function saveEvent(){
+    eventFieldsArray = [];
+    eventFieldsEl = document.querySelectorAll(".event-input");
+    for (let i = 0; i < eventFieldsEl.length; i++){
+        eventFieldsArray.push(eventFieldsEl[i].value);
+    }
+    console.log(eventFieldsArray);
+    localStorage.setItem("eventsArray", JSON.stringify(eventFieldsArray));
+}
+
+// Function to retrieve events from localStorage
+function retrieveEvent(){
+    eventFieldsEl = document.querySelectorAll(".event-input");
+    // Failsafe for if nothing is in localStorage
+    if (localStorage.length === 0){
+        eventFieldsArray = [];
+    } else {
+        eventFieldsArray = JSON.parse(localStorage.getItem("eventsArray"));
+        for (let i = 0; i < eventFieldsEl.length; i++){
+            eventFieldsEl[i].value = eventFieldsArray[i]; 
+        }
+    }
+}
+
 // Function to build out the timeblocks and associated text
 function initPage(){
     let i = 9;
