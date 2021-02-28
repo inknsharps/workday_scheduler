@@ -2,6 +2,9 @@
 let plannerEl = $(".container");
 let currentDateEl = $("#currentDay");
 let timeBlockBodyEl = $(".time-block")
+// Declare event field related variables
+let eventFieldsEl;
+let eventFieldsArray;
 
 // Moment.js Scripts
 // Declare variable for the current date and time
@@ -60,22 +63,18 @@ function retrieveEvent(){
 function initPage(){
     let i = 9;
     while (i < 19){
-        if (i < 12) {
-            while (i < 12){
-                buildTimeBlocks(i);
-                i++;
-            } 
-        } else if (i === 12){
-            buildTimeBlocks(i);
-            i++;
-        } else if (i < 19) {
-            while (i < 19) {
-                buildTimeBlocks(i);
-                i++;
-            }
-        }
+        buildTimeBlocks(i);
+        i++;
     }
     retrieveEvent();
 }
 
 initPage();
+
+// TO DO
+// Hour by hour styling
+let currentHour = moment().format("hA");
+
+// function hourStyling(){
+//     if currentHour = 
+// }
