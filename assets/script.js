@@ -7,7 +7,7 @@ let clearEventsButtonEl = $(".clear-events").on("click", clearAllEvents);
 let eventFieldsEl;
 let eventFieldsArray;
 // Declare variable for the current hour as a number
-let currentHour = moment().hours()
+let currentHour = moment().hours();
 // Declare variable for the current date and time
 let currentDate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 
@@ -17,7 +17,7 @@ setInterval(() => {
     currentDateEl.text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
 }, 1000);
 
-// Function for building the timeblocks
+// Function for building the time blocks
 function buildTimeBlocks(hour){
     // Create and append row for time block
     let timeRowEl = $("<tr></tr>")
@@ -78,8 +78,8 @@ function saveEvent(){
 // Function to retrieve events from localStorage
 function retrieveEvent(){
     eventFieldsEl = document.querySelectorAll(".event-input");
-    // Failsafe for if nothing is in localStorage
-    if (localStorage.length === 0){
+    // Failsafe for if the eventsArray is undefined in localStorage
+    if (localStorage.eventsArray === undefined){
         eventFieldsArray = [];
     } else {
         eventFieldsArray = JSON.parse(localStorage.getItem("eventsArray"));
@@ -96,17 +96,17 @@ function clearAllEvents(){
     if (deleteChoice === false){
         return;
     } else {
-        // Failsafe for if nothing is in localStorage
-        if (localStorage.length === 0){
-            eventFieldsArray = [];
+        // Failsafe for if the eventsArray is undefined in localStorage
+        if (localStorage.eventsArray === undefined){
+            eventFieldsArray = [];    
         } else {
             eventFieldsArray = JSON.parse(localStorage.getItem("eventsArray"));
             for (let i = 0; i < eventFieldsEl.length; i++){
                 eventFieldsEl[i].value = "";
             }
         }
-        localStorage.clear();
         saveEvent();
+        localStorage.clear();
     }
 }
 
